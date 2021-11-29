@@ -3,4 +3,4 @@ name=ML Unlocker
 version=stable
 versionCode=10
 author=@preparetodietm
-description=This magisk module can Unlock Ultra HD Graphics and Max FPS in Mobile Legends on any devices systemlessly. To activate (you must have a Termux/Terminal Emualtor), execute `su` first then `mlunlocker -a` and `mlunlocker -d` if you want to deactivate.
+description=This magisk module can Unlock Ultra HD Graphics and Max FPS in Mobile Legends on any devices systemlessly. To activate (you must have a Termux/Terminal Emulator), execute `su` first then `mlunlocker -a` and `mlunlocker -d` if you want to deactivate.
