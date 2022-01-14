@@ -1,55 +1,52 @@
-##############
-# ML Unlocker 
-##############
+###################
+# ML Unlocker v2.0 
+###################
 SKIPUNZIP=1
+
+# Note
+ui_print " Take Note: ML Unlocker works only if you activate"
+sleep 0.5
+ui_print " in Termux/Terminal Emulator. For more info, execute"
+sleep 0.5
+ui_print " 𝐬𝐮 -𝐜 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫 or 𝐬𝐮 first then 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫"
+sleep 10
 
 # Unzip files
 ui_print "- Unzipping files..."
 sleep 1
 unzip -oj "$ZIPFILE" module.prop mlunlocker -d "$TMPDIR" >&2
 
-# Detect xbin folder if exist then create one
-ui_print "- Detecting xbin folder if exist..."
-sleep 0.5
+# Detect system xbin folder if exist and create path in MODPATH
+ui_print "- Detecting xbin folder in system..."
+sleep 1
 if [ -d /system/xbin ]; then
-  ui_print "✓ xbin folder detected!"
-  ui_print "- Creating xbin folder in module..."
-  sleep 1
-  mkdir -p "$MODPATH"/system/xbin/
+  ui_print "✓xbin folder detected!"
+  ui_print "- Creating xbin folder in MODPATH"
+  mkdir -p "$MODPATH"/system/xbin
 else
-  ui_print "!xbin folder in system is not exist!"
-  ui_print "- Creating xbin folder in module..."
-  sleep 1
-  mkdir -p "$MODPATH"/system/xbin/
-  ui_print "- Mounting system partition..."
-  sleep 1
-  mount -o remount,rw /
-  mount -o remount,rw /system
-  remount
-  ui_print "- Creating xbin folder in system..."
-  sleep 1
-  mkdir -p /system/xbin/
-  ui_print "- Setting permissions for system xbin folder..."
-  sleep 1
-  set_perm /system/xbin/ 0 2000 751
-  ui_print "- Unmounting system partition..."
-  sleep 1
-  mount -o remount,ro /
-  mount -o remount,ro /system
-  sync
+  ui_print "✓xbin folder not detected!"
+  # Create bin path in MODPATH
+  ui_print "- Creating bin folder in MODPATH"
+  mkdir -p "$MODPATH"/system/bin
 fi
 
 # Extract module files
 ui_print "- Extracting module files..."
 sleep 1
 cp -af "$TMPDIR"/module.prop "$MODPATH"/module.prop
-cp -af "$TMPDIR"/mlunlocker "$MODPATH"/system/xbin/mlunlocker
+if [ -d /system/xbin ]; then
+  cp -af "$TMPDIR"/mlunlocker "$MODPATH"/system/xbin/mlunlocker
+else
+  cp -af "$TMPDIR"/mlunlocker "$MODPATH"/system/bin/mlunlocker
+fi
 
 # Setting Permissions
 ui_print "- Setting permissions..."
 sleep 1
 set_perm_recursive "$MODPATH" 0 0 0755 0644
+set_perm "$MODPATH"/system/bin/ 0 2000 751
 set_perm "$MODPATH"/system/xbin/ 0 2000 751
+set_perm "$MODPATH"/system/bin/mlunlocker 0 2000 755
 set_perm "$MODPATH"/system/xbin/mlunlocker 0 2000 755
 
 #===============================
