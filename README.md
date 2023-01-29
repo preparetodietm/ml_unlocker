@@ -1,16 +1,16 @@
 <h1 align="center"> ML Unlocker </h1>
-<p align="center"><img src="https://github.com/preparetodietm/ml_unlocker/blob/v2.0/.github/mlunlocker.jpg"> This magisk module can Unlock Ultra HD Graphics and Max FPS in Mobile Legends on any devices systemlessly.
+<p align="center"><img src="https://github.com/preparetodietm/ml_unlocker/blob/v3.0/.github/mlunlocker.jpg"> This magisk module can Unlock Ultra HD Graphics and Max FPS in Mobile Legends on any devices systemlessly.
 </p>
 
 ## Requirements:
 - [Termux](https://f-droid.org/en/packages/com.termux/) or
-- [Terminal Emulator](https://play.google.com/store/apps/details?id=jackpal.androidterm)
+- [Material Terminal](https://play.google.com/store/apps/details?id=yarolegovich.materialterminal)
 
 ## How to use?
 
 1. Download at least 1 app in the requirements and install it.
-2. Download ML Unlocker.zip (link below) and flash it in Magisk Manager and Reboot after done.
-3. Open Termux/Terminal Emulator, type `su`, hit enter, then grant root permission.
+2. Download ML Unlocker v3.0.zip (link below) and flash it in Magisk Manager and Reboot after done.
+3. Open Termux/Material Terminal, type `su`, hit enter, then grant root permission.
 4. - Now, to activate mlunlocker, type `mlunlocker -a` and hit enter.
      - It activates the ultra hd graphics, max fps of your device, without using any spoofing tools.
    - To deactivate mlunlocker, type `mlunlocker -d` and hit enter.
@@ -35,11 +35,6 @@
 - *`-a`* if you want to activate the mlunlocker
 - *`-d`* if you want to deactivate the mlunlocker
 - *`-f`* if you want to unlock full ultra hd graphics and activate the mlunlocker
-
-## Changelog:
-- Added 75hz
-- Remove directly writing in /system
-- Small changes and fixes on mlunlocker script
 
 ## Download:
 - [Download Here](https://www.pling.com/p/1653584/)
