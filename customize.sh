@@ -1,14 +1,14 @@
 ###################
-# ML Unlocker v2.0 
+# ML Unlocker v3.0 
 ###################
 SKIPUNZIP=1
 
 # Note
-ui_print " Take Note: ML Unlocker works only if you activate"
+ui_print " Take Note: ML Unlocker v3.0 works only if you activate"
 sleep 0.5
-ui_print " in Termux/Terminal Emulator. For more info, execute"
+ui_print " in Termux/Material Terminal. For more info, execute"
 sleep 0.5
-ui_print " 𝐬𝐮 -𝐜 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫 or 𝐬𝐮 first then 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫"
+ui_print " 𝐬𝐮 -𝐜 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫 or 𝐬𝐮 first then 𝐦𝐥𝐮𝐧𝐥𝐨𝐜𝐤𝐞𝐫 ."
 sleep 10
 
 # Unzip files
@@ -43,11 +43,15 @@ fi
 # Setting Permissions
 ui_print "- Setting permissions..."
 sleep 1
-set_perm_recursive "$MODPATH" 0 0 0755 0644
-set_perm "$MODPATH"/system/bin/ 0 2000 751
-set_perm "$MODPATH"/system/xbin/ 0 2000 751
-set_perm "$MODPATH"/system/bin/mlunlocker 0 2000 755
-set_perm "$MODPATH"/system/xbin/mlunlocker 0 2000 755
+if [ -d "$MODPATH"/system/xbin ]; then
+  set_perm_recursive "$MODPATH" 0 0 0755 0644
+  set_perm "$MODPATH"/system/xbin/ 0 2000 751
+  set_perm "$MODPATH"/system/xbin/mlunlocker 0 2000 755
+else
+  set_perm_recursive "$MODPATH" 0 0 0755 0644
+  set_perm "$MODPATH"/system/bin/ 0 2000 751
+  set_perm "$MODPATH"/system/bin/mlunlocker 0 2000 755
+fi
 
 #===============================
 # End of customize.sh
